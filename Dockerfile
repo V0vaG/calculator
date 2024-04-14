@@ -18,6 +18,7 @@ RUN cat ./pom.xml
 # Run the build
 RUN mvn package
 
+WORKDIR target
 RUN ls
 
 # Use Java 17 as the base for the 2nd stage build
