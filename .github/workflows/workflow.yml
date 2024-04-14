@@ -12,7 +12,27 @@ env:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-jobs:
+jobs: #https://github.com/marketplace/actions/dependency-check
+
+  docker-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+        
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.8
+          
+      - name: Test with Checkov
+        id: checkov
+        uses: bridgecrewio/checkov-action@master
+        with:
+          directory: '.'
+          framework: dockerfile 
+          
+          
   depchecktest:
     runs-on: ubuntu-latest
     name: depecheck_test
