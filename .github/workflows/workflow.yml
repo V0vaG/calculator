@@ -34,6 +34,7 @@ jobs: #https://github.com/marketplace/actions/dependency-check
           
           
   depchecktest:
+     needs: docker-scan
     runs-on: ubuntu-latest
     name: depecheck_test
     steps:
