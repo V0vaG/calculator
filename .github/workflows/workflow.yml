@@ -19,7 +19,7 @@ jobs: #https://github.com/marketplace/actions/dependency-check
     runs-on: ubuntu-latest
     steps:
       - name: check if merging
-        uses: echo "Merging!!!!!!!!"
+        run: echo "Merging!!!!!!!!"
 
   Dockerfile_scan:
     runs-on: ubuntu-latest
