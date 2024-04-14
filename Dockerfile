@@ -22,7 +22,7 @@ RUN mvn compiler:compile
 RUN mvn package
 
 RUN ls
-WORKDIR target
+#WORKDIR target
 RUN ls
 
 # Use Java 17 as the base for the 2nd stage build
@@ -40,7 +40,8 @@ ENV PATCH_NUM=$PATCH_NUM
 
 
 # Copy Artifact .jar file from 1st build
-COPY --from=builder /target/Calculator-$MAJOR_NUM.$MINOR_NUM.$PATCH_NUM.jar .
+#COPY --from=builder /target/Calculator-$MAJOR_NUM.$MINOR_NUM.$PATCH_NUM.jar .
+COPY --from=builder . .
 
 # Add new user
 #RUN adduser vova-kepler
