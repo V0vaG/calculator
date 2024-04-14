@@ -18,7 +18,9 @@ RUN cat ./pom.xml
 # Run the build
 RUN mvn compiler:compile
 
-RUN ls
+# Run the package
+RUN mvn package
+
 WORKDIR target
 RUN ls
 
