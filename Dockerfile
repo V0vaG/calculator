@@ -21,6 +21,7 @@ RUN mvn compiler:compile
 # Run the package
 RUN mvn package
 
+RUN ls
 WORKDIR target
 RUN ls
 
@@ -39,7 +40,7 @@ ENV PATCH_NUM=$PATCH_NUM
 
 
 # Copy Artifact .jar file from 1st build
-COPY --from=builder . .
+COPY --from=builder /target/Calculator-$MAJOR_NUM.$MINOR_NUM.$PATCH_NUM.jar .
 
 # Add new user
 #RUN adduser vova-kepler
