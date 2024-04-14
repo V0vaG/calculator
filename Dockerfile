@@ -16,7 +16,7 @@ RUN sed -i "s/x.y.z/$MAJOR_NUM.$MINOR_NUM.$PATCH_NUM/g" ./pom.xml
 RUN cat ./pom.xml
 
 # Run the build
-RUN mvn package
+RUN mvn build
 
 WORKDIR target
 RUN ls
