@@ -30,6 +30,8 @@ ENV MAJOR_NUM=$MAJOR_NUM
 ENV MINOR_NUM=$MINOR_NUM
 ENV PATCH_NUM=$PATCH_NUM
 
+RUN ls
+
 # Copy Artifact .jar file from 1st build
 COPY --from=builder /target/myapp-$MAJOR_NUM.$MINOR_NUM.$PATCH_NUM.jar .
 
