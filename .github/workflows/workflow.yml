@@ -1,14 +1,6 @@
 name: Calculator
 
 on:
-  pull_request:
-    branches: [ "main" ]
-jobs:
-    steps:
-      - name: check if merging
-        run: echo "Merging!!!!!!!!"
-        
-on:
   push:
     branches: [ "main" ]
     
@@ -24,7 +16,7 @@ env:
   
 jobs: #https://github.com/marketplace/actions/dependency-check     
   codacy-analysis-cli:
-  #  if: github.event.pull_request.merged == 'true'
+    if: github.event.pull_request.merged == 'true'
     name: Codacy Analysis CLI
     runs-on: ubuntu-latest
     steps:
