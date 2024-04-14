@@ -35,5 +35,8 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_U }}
           password: ${{ secrets.DOCKER_HUB_T }}    
           
+      - name: tag latest
+        run: docker tag calculator:latest vova0911/calculator:latest
+          
       - name: push latest
         run: docker push vova0911/calculator:latest
