@@ -44,10 +44,10 @@ COPY --from=builder /target/Calculator-$MAJOR_NUM.$MINOR_NUM.$PATCH_NUM.jar .
 #COPY --from=builder . .
 
 # Add new user
-#RUN adduser vova-kepler
+RUN adduser vova
 
 # Set the non-root user as the default user
-#USER vova-kepler
+USER vova
 
 # Run the .jar file
 #CMD java -jar myapp-$MAJOR_NUM.$MINOR_NUM.$PATCH_NUM.jar
