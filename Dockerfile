@@ -37,8 +37,6 @@ ENV MAJOR_NUM=$MAJOR_NUM
 ENV MINOR_NUM=$MINOR_NUM
 ENV PATCH_NUM=$PATCH_NUM
 
-
-
 # Copy Artifact .jar file from 1st build
 COPY --from=builder /target/Calculator-$MAJOR_NUM.$MINOR_NUM.$PATCH_NUM.jar .
 #COPY --from=builder . .
@@ -51,4 +49,4 @@ USER vova
 
 # Run the .jar file
 #CMD java -jar myapp-$MAJOR_NUM.$MINOR_NUM.$PATCH_NUM.jar
-CMD ls
+HEALTHCHECK CMD ls
