@@ -1,1 +1,22 @@
+name: Calculator_static_check
 
+on:
+  pull_request:
+    types:
+      - closed
+    branches: [ "main" ]
+    
+
+jobs: #https://github.com/marketplace/actions/dependency-check     
+  codacy-analysis-cli:
+    name: Codacy Analysis CLI
+    runs-on: ubuntu-latest
+    steps:
+      - name: check if merging
+        run: echo "Merging!!!!!!!!"
+        
+      - name: Checkout code
+        uses: actions/checkout@main
+
+      - name: Run Codacy Analysis CLI
+        uses: codacy/codacy-analysis-cli-action@master
