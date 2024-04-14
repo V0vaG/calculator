@@ -13,19 +13,15 @@ env:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
   
-jobs: #https://github.com/marketplace/actions/dependency-check
-
-  build-on-merge:
+jobs: #https://github.com/marketplace/actions/dependency-check     
+  codacy-analysis-cli:
     if: startsWith(github.event.head_commit.message, 'Merge pull request')
+    name: Codacy Analysis CLI
     runs-on: ubuntu-latest
     steps:
       - name: check if merging
         run: echo "Merging!!!!!!!!"
         
-  codacy-analysis-cli:
-    name: Codacy Analysis CLI
-    runs-on: ubuntu-latest
-    steps:
       - name: Checkout code
         uses: actions/checkout@main
 
