@@ -33,4 +33,7 @@ jobs:
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_HUB_U }}
-          password: ${{ secrets.DOCKER_HUB_T }}     
+          password: ${{ secrets.DOCKER_HUB_T }}    
+          
+      - name: push latest
+      run: docker push vova0911/calculator:latest
