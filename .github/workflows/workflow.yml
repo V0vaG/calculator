@@ -16,10 +16,10 @@ jobs: #https://github.com/marketplace/actions/dependency-check
 
   build-on-merge:
     if: startsWith(github.event.head_commit.message, 'Merge pull request')
-  runs-on: ubuntu-latest
-  steps:
-    - name: check if merging
-      uses: echo "Merging!!!!!!!!"
+    runs-on: ubuntu-latest
+    steps:
+      - name: check if merging
+        uses: echo "Merging!!!!!!!!"
 
   Dockerfile_scan:
     runs-on: ubuntu-latest
