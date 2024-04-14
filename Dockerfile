@@ -18,6 +18,8 @@ RUN cat ./pom.xml
 # Run the build
 RUN mvn package
 
+RUN ls
+
 # Use Java 17 as the base for the 2nd stage build
 FROM openjdk:17-jdk-slim
 
@@ -30,16 +32,16 @@ ENV MAJOR_NUM=$MAJOR_NUM
 ENV MINOR_NUM=$MINOR_NUM
 ENV PATCH_NUM=$PATCH_NUM
 
-RUN ls
+
 
 # Copy Artifact .jar file from 1st build
 COPY --from=builder /target/myapp-$MAJOR_NUM.$MINOR_NUM.$PATCH_NUM.jar .
 
 # Add new user
-RUN adduser vova-kepler
+#RUN adduser vova-kepler
 
 # Set the non-root user as the default user
-USER vova-kepler
+#USER vova-kepler
 
 # Run the .jar file
 CMD java -jar myapp-$MAJOR_NUM.$MINOR_NUM.$PATCH_NUM.jar
