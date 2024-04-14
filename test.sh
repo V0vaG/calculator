@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker run --name calculator vova0911/calculator:latest
+docker run -it --name calculator vova0911/calculator:latest bash
 
 
 echo "Enter container:" 
