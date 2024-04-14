@@ -1,4 +1,13 @@
 name: Calculator
+
+on:
+  pull_request:
+    branches: [ "main" ]
+jobs:
+    steps:
+      - name: check if merging
+        run: echo "Merging!!!!!!!!"
+        
 on:
   push:
     branches: [ "main" ]
