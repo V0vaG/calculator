@@ -34,8 +34,8 @@ jobs: #https://github.com/marketplace/actions/dependency-check
           distribution: 'temurin'
           java-version: '11'
       - uses: pmd/pmd-github-action@v2
-        with:
-          rulesets: 'ruleset.xml'
+        #with:
+          #rulesets: 'ruleset.xml'
         
       - name: Set up Python 3.8
         uses: actions/setup-python@v4
