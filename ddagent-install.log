@@ -1,0 +1,61 @@
+[34m
+* Datadog Agent 7 install script v1.29.0
+[0m
+[34m
+* Installing apt-transport-https, curl and gnupg
+[0m
+Get:1 https://download.docker.com/linux/ubuntu mantic InRelease [48.8 kB]
+Get:2 https://apt.releases.hashicorp.com mantic InRelease [12.9 kB]
+Err:2 https://apt.releases.hashicorp.com mantic InRelease
+  Unknown error executing apt-key
+Err:1 https://download.docker.com/linux/ubuntu mantic InRelease
+  Unknown error executing apt-key
+Ign:3 https://apt.datadoghq.com stable InRelease
+Get:4 https://apt.datadoghq.com stable Release [17.8 kB]
+Get:5 https://apt.datadoghq.com stable Release.gpg [801 B]
+Get:6 https://dl.google.com/linux/chrome/deb stable InRelease [1,825 B]
+Hit:7 http://il.archive.ubuntu.com/ubuntu mantic InRelease
+Ign:5 https://apt.datadoghq.com stable Release.gpg
+Err:6 https://dl.google.com/linux/chrome/deb stable InRelease
+  Unknown error executing apt-key
+Ign:8 https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 InRelease
+Err:7 http://il.archive.ubuntu.com/ubuntu mantic InRelease
+  Unknown error executing apt-key
+Hit:9 http://il.archive.ubuntu.com/ubuntu mantic-backports InRelease
+Hit:10 https://ppa.launchpadcontent.net/ansible/ansible/ubuntu mantic InRelease
+Err:9 http://il.archive.ubuntu.com/ubuntu mantic-backports InRelease
+  Unknown error executing apt-key
+Err:10 https://ppa.launchpadcontent.net/ansible/ansible/ubuntu mantic InRelease
+  Unknown error executing apt-key
+Get:11 http://il.archive.ubuntu.com/ubuntu mantic-updates InRelease [109 kB]
+Get:12 http://security.ubuntu.com/ubuntu mantic-security InRelease [109 kB]
+Err:11 http://il.archive.ubuntu.com/ubuntu mantic-updates InRelease
+  Unknown error executing apt-key
+Get:13 https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 Release [2,090 B]
+Get:14 https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 Release.gpg [866 B]
+Err:14 https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 Release.gpg
+  Unknown error executing apt-key
+Hit:15 https://repo.fortinet.com/repo/6.4/ubuntu /bionic InRelease
+Err:12 http://security.ubuntu.com/ubuntu mantic-security InRelease
+  Unknown error executing apt-key
+Err:15 https://repo.fortinet.com/repo/6.4/ubuntu /bionic InRelease
+  Unknown error executing apt-key
+Get:16 https://repo.fortinet.com/repo/7.0/ubuntu /bionic InRelease [1,933 B]
+Err:16 https://repo.fortinet.com/repo/7.0/ubuntu /bionic InRelease
+  Unknown error executing apt-key
+Reading package lists...
+W: An error occurred during the signature verification. The repository is not updated and the previous index files will be used. GPG error: https://apt.releases.hashicorp.com mantic InRelease: Unknown error executing apt-key
+W: An error occurred during the signature verification. The repository is not updated and the previous index files will be used. GPG error: https://download.docker.com/linux/ubuntu mantic InRelease: Unknown error executing apt-key
+W: GPG error: https://apt.datadoghq.com stable Release: Unknown error executing apt-key
+E: The repository 'https://apt.datadoghq.com stable Release' is not signed.
+W: An error occurred during the signature verification. The repository is not updated and the previous index files will be used. GPG error: https://dl.google.com/linux/chrome/deb stable InRelease: Unknown error executing apt-key
+W: An error occurred during the signature verification. The repository is not updated and the previous index files will be used. GPG error: http://il.archive.ubuntu.com/ubuntu mantic InRelease: Unknown error executing apt-key
+W: An error occurred during the signature verification. The repository is not updated and the previous index files will be used. GPG error: http://il.archive.ubuntu.com/ubuntu mantic-backports InRelease: Unknown error executing apt-key
+W: An error occurred during the signature verification. The repository is not updated and the previous index files will be used. GPG error: https://ppa.launchpadcontent.net/ansible/ansible/ubuntu mantic InRelease: Unknown error executing apt-key
+W: An error occurred during the signature verification. The repository is not updated and the previous index files will be used. GPG error: http://il.archive.ubuntu.com/ubuntu mantic-updates InRelease: Unknown error executing apt-key
+W: An error occurred during the signature verification. The repository is not updated and the previous index files will be used. GPG error: https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 Release: Unknown error executing apt-key
+W: An error occurred during the signature verification. The repository is not updated and the previous index files will be used. GPG error: http://security.ubuntu.com/ubuntu mantic-security InRelease: Unknown error executing apt-key
+W: An error occurred during the signature verification. The repository is not updated and the previous index files will be used. GPG error: https://repo.fortinet.com/repo/6.4/ubuntu /bionic InRelease: Unknown error executing apt-key
+W: An error occurred during the signature verification. The repository is not updated and the previous index files will be used. GPG error: https://repo.fortinet.com/repo/7.0/ubuntu /bionic InRelease: Unknown error executing apt-key
+[31m'apt-get update' failed, the script will not install the latest version of apt-transport-https.[0m
+bash: line 967: /tmp/ddog_install_error_msg: Permission denied
