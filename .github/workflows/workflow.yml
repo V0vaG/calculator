@@ -9,7 +9,7 @@ jobs:
   runs-on: ubuntu-latest
   steps:
     - name: check if merging
-        uses: echo "Merging!!!!!!!!"
+      uses: echo "Merging!!!!!!!!"
 
 
 name: Calculator
