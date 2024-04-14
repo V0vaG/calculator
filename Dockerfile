@@ -45,7 +45,7 @@ COPY --from=builder /target/Calculator-$MAJOR_NUM.$MINOR_NUM.$PATCH_NUM.jar .
 RUN adduser vova
 
 # Set the non-root user as the default user
-#USER vova
+USER vova
 
 # Run the .jar file
 #CMD java -jar myapp-$MAJOR_NUM.$MINOR_NUM.$PATCH_NUM.jar

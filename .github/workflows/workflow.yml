@@ -1,3 +1,17 @@
+name: build-on-merge
+
+on:
+  push:
+    branches: ["main"]
+jobs:
+  build-on-merge:
+    if: startsWith(github.event.head_commit.message, 'Merge pull request')
+  runs-on: ubuntu-latest
+  steps:
+    - name: check if merging
+        uses: echo "Merging!!!!!!!!"
+
+
 name: Calculator
 on:
   push:
