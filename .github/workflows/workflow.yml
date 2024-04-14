@@ -31,8 +31,8 @@ jobs: #https://github.com/marketplace/actions/dependency-check
       - name: Checkout Repo
         uses: actions/checkout@v3
         
-      - name: Analyze code statically using ESLint
-        uses: moneyforward/eslint-action@v0
+      - name: Analyze code statically using misspell
+        uses: moneyforward/misspell-action@v0
         
       - name: Set up Python 3.8
         uses: actions/setup-python@v4
