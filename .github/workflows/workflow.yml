@@ -36,4 +36,4 @@ jobs:
           password: ${{ secrets.DOCKER_HUB_T }}    
           
       - name: push latest
-      run: docker push vova0911/calculator:latest
+        run: docker push vova0911/calculator:latest
