@@ -15,7 +15,7 @@ env:
   
 jobs: #https://github.com/marketplace/actions/dependency-check     
   codacy-analysis-cli:
-    if: startsWith(github.event.head_commit.message, 'Merge pull request')
+    if: github.event.pull_request.merged == 'true'
     name: Codacy Analysis CLI
     runs-on: ubuntu-latest
     steps:
