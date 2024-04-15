@@ -16,37 +16,7 @@ env:
   workflow_dispatch:
   
 jobs: #https://github.com/marketplace/actions/dependency-check    
-
-  codeql:
-    strategy:
-      fail-fast: false
-      matrix:
-        # Override automatic language detection by changing the list below.
-        # Supported options are listed in a comment in the default workflow.
-        language: ['go', 'javascript-typescript']
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      security-events: write
-      pull-requests: read
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Initialize CodeQL
-        uses: github/codeql-action/init@main
-        with:
-            languages: javascript
-            config-file: ./.github/codeql/codeql-config.yml
-            tools: latest
-
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@main
-        
-        
   Dockerfile_scan:
-    needs: codeql
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
@@ -91,8 +61,6 @@ jobs: #https://github.com/marketplace/actions/dependency-check
            name: Depcheck report
            path: ${{github.workspace}}/reports
 
-
-
   build:
     needs: Dep_check_test
     runs-on: ubuntu-latest
@@ -106,8 +74,12 @@ jobs: #https://github.com/marketplace/actions/dependency-check
       - name: Run ls
         run: ls
         
-      - name: show_image
-        run: docker images
+  push_2_dockerhub:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
         
       - name: Login to Docker Hub
         uses: docker/login-action@v3
@@ -120,5 +92,3 @@ jobs: #https://github.com/marketplace/actions/dependency-check
           
       - name: push latest
         run: docker push vova0911/calculator:latest
-        
-
