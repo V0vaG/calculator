@@ -23,7 +23,7 @@ public class ThemeLoader {
             ThemeList themeList = mapper.readValue(new File("src/main/resources/application.yaml"), ThemeList.class);
             return themeList.getThemesAsMap();
         } catch (IOException e) {
-            return Collections.emptyMap();a
+            return Collections.emptyMap();
         }
     }
 }
