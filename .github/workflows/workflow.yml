@@ -15,7 +15,37 @@ env:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
   
-jobs: #https://github.com/marketplace/actions/dependency-check        
+jobs: #https://github.com/marketplace/actions/dependency-check    
+
+  codeql:
+    strategy:
+      fail-fast: false
+      matrix:
+        # Override automatic language detection by changing the list below.
+        # Supported options are listed in a comment in the default workflow.
+        language: ['go', 'javascript-typescript']
+    runs-on: ubuntu-latest
+    needs: build
+    permissions:
+      contents: read
+      security-events: write
+      pull-requests: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@main
+        with:
+            languages: javascript
+            config-file: ./.github/codeql/codeql-config.yml
+            tools: latest
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@main
+        
+        
   Dockerfile_scan:
     runs-on: ubuntu-latest
     steps:
@@ -91,30 +121,4 @@ jobs: #https://github.com/marketplace/actions/dependency-check
       - name: push latest
         run: docker push vova0911/calculator:latest
         
-  codeql:
-    strategy:
-      fail-fast: false
-      matrix:
-        # Override automatic language detection by changing the list below.
-        # Supported options are listed in a comment in the default workflow.
-        language: ['go', 'javascript-typescript']
-    runs-on: ubuntu-latest
-    needs: build
-    permissions:
-      contents: read
-      security-events: write
-      pull-requests: read
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Initialize CodeQL
-        uses: github/codeql-action/init@main
-        with:
-            languages: javascript
-            config-file: ./.github/codeql/codeql-config.yml
-            tools: latest
-
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@main
