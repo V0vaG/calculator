@@ -82,7 +82,24 @@ jobs: #https://github.com/marketplace/actions/dependency-check
         with:
           username: ${{ secrets.DOCKER_HUB_U }}
           password: ${{ secrets.DOCKER_HUB_T }}  
+                 
+      - name: push latest
+        run: docker push vova0911/calculator:latest
+        
           
+  sign-image:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_HUB_U }}
+          password: ${{ secrets.DOCKER_HUB_T }} 
+      
       - name: Install Cosign
         uses: sigstore/cosign-installer@v3.5.0
           
@@ -96,15 +113,7 @@ jobs: #https://github.com/marketplace/actions/dependency-check
         env:
           COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD }}
         run: cosign sign --key cosign.key vova0911/calculator:latest -y
-                 
-      - name: push latest
-        run: docker push vova0911/calculator:latest
-
-      - name: Write public signing key to disk
-        run: 'echo "$KEY" > cosign.key'
-        shell: bash
-        env:
-          KEY: ${{ secrets.COSIGN_PUBLIC_KEY }}
+           
              
   verify-image:
     runs-on: ubuntu-latest
@@ -115,8 +124,8 @@ jobs: #https://github.com/marketplace/actions/dependency-check
       - name: Checkout Repo
         uses: actions/checkout@v3
 
-    #  - name: Install Cosign
-    #    uses: sigstore/cosign-installer@v3.5.0
+      - name: Install Cosign
+        uses: sigstore/cosign-installer@v3.5.0
           
       - name: Write signing key to disk
         run: 'echo "$KEY" > cosign.key'
