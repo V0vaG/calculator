@@ -74,13 +74,6 @@ jobs: #https://github.com/marketplace/actions/dependency-check
       - name: Run ls
         run: ls
         
-  push_2_dockerhub:
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-      
       - name: Run im
         run: docker images
         
@@ -95,3 +88,4 @@ jobs: #https://github.com/marketplace/actions/dependency-check
           
       - name: push latest
         run: docker push vova0911/calculator:latest
+        
