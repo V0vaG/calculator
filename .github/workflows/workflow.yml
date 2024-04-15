@@ -95,13 +95,11 @@ jobs: #https://github.com/marketplace/actions/dependency-check
       - name: Sign the published Docker image
         env:
           COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD }}
-        run: |
-          cosign sign --key cosign.key vova0911/calculator:latest -y
-          
-      #- name: tag latest
-      #  run: docker tag calculator vova0911/calculator:latest
-          
-          
+        run: cosign sign --key cosign.key vova0911/calculator:latest -y
+                 
       - name: push latest
         run: docker push vova0911/calculator:latest
+
+      - name: Verify Image
+        run: cosign verify --key cosign.key vova0911/calculator:latest
         
