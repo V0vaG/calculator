@@ -101,6 +101,7 @@ jobs: #https://github.com/marketplace/actions/dependency-check
       #- name: tag latest
       #  run: docker tag calculator vova0911/calculator:latest
           
+          
       - name: push latest
         run: docker push vova0911/calculator:latest
         
