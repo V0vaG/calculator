@@ -96,7 +96,7 @@ jobs: #https://github.com/marketplace/actions/dependency-check
          env:
            COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD }}
          run: |
-          cosign sign --key cosign.key vova0911/calculator:latest -y
+           cosign sign --key cosign.key vova0911/calculator:latest -y
           
       #- name: tag latest
       #  run: docker tag calculator vova0911/calculator:latest
