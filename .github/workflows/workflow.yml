@@ -101,11 +101,11 @@ jobs: #https://github.com/marketplace/actions/dependency-check
         run: docker push vova0911/calculator:latest
 
       - name: Write public signing key to disk
-        run: 'echo "$PUB_KEY" > cosign_pub.key'
+        run: 'echo "$KEY" > cosign.key'
         shell: bash
         env:
-          PUB_KEY: ${{ secrets.COSIGN_PUBLIC_KEY }}
+          KEY: ${{ secrets.COSIGN_PUBLIC_KEY }}
           
       - name: Verify Image
-        run: cosign verify --key cosign_pub.key vova0911/calculator:latest
+        run: cosign verify --key cosign.key vova0911/calculator:latest
         
