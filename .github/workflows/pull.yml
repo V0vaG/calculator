@@ -5,10 +5,8 @@ on:
     branches: [ "main" ]
 
 jobs:
-
-  
   codacy-analysis-cli:
-    name: Codacy Analysis CLI
+    name: Codacy Static Analysis CLI
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
