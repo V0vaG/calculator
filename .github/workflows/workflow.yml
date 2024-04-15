@@ -88,7 +88,7 @@ jobs: #https://github.com/marketplace/actions/dependency-check
           password: ${{ secrets.DOCKER_HUB_T }}    
           
       - name: tag latest
-        run: docker tag calculator:latest vova0911/calculator:latest
+        run: docker tag calculator vova0911/calculator:latest
           
       - name: push latest
         run: docker push vova0911/calculator:latest
