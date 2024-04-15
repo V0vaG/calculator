@@ -34,9 +34,33 @@ jobs: #https://github.com/marketplace/actions/dependency-check
           directory: '.'
           framework: dockerfile 
           
+
+  dependancy-scan:
+    needs: Dockerfile_scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+        
+      - name: Build with Maven
+        run: mvn clean install
+
+      - name: Depcheck
+        uses: dependency-check/Dependency-Check_Action@main
+        id: Depcheck
+        with:
+          project: 'BatBat-Game'
+          path: '.'
+          format: 'SARIF'
+          out: 'reports' # this is the default, no need to specify unless you wish to override it
+          args: >
+            --failOnCVSS 10
+            --enableRetired
+            
+          
           
   Dep_check_test:
-    needs: Dockerfile_scan
+    needs: dependancy-scan
     runs-on: ubuntu-latest
     name: depecheck_test
     steps:
