@@ -81,7 +81,22 @@ jobs: #https://github.com/marketplace/actions/dependency-check
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_HUB_U }}
-          password: ${{ secrets.DOCKER_HUB_T }}    
+          password: ${{ secrets.DOCKER_HUB_T }}  
+          
+        - name: Install Cosign
+          uses: sigstore/cosign-installer@v3.5.0
+          
+        - name: Write signing key to disk
+          run: 'echo "$KEY" > cosign.key'
+          shell: bash
+          env:
+            KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
+            
+        - name: Sign the published Docker image
+          env:
+            COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD }}
+          run: |
+           cosign sign --key cosign.key vova0911/calculator:latest -y
           
       #- name: tag latest
       #  run: docker tag calculator vova0911/calculator:latest
