@@ -69,7 +69,7 @@ jobs: #https://github.com/marketplace/actions/dependency-check
       - uses: actions/checkout@v3
       
       - name: Build the Docker image
-        run: docker build --build-arg PATCH_NUM=$PATCH_NUM --build-arg MAJOR_NUM=$MAJOR_NUM --build-arg MINOR_NUM=$MINOR_NUM -t calculator .
+        run: docker build --build-arg PATCH_NUM=$PATCH_NUM --build-arg MAJOR_NUM=$MAJOR_NUM --build-arg MINOR_NUM=$MINOR_NUM -t vova0911/calculator:latest .
         
       - name: Run ls
         run: ls
@@ -90,8 +90,8 @@ jobs: #https://github.com/marketplace/actions/dependency-check
           username: ${{ secrets.DOCKER_HUB_U }}
           password: ${{ secrets.DOCKER_HUB_T }}    
           
-      - name: tag latest
-        run: docker tag calculator vova0911/calculator:latest
+      #- name: tag latest
+      #  run: docker tag calculator vova0911/calculator:latest
           
       - name: push latest
         run: docker push vova0911/calculator:latest
