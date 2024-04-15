@@ -4,6 +4,13 @@ on:
   push:
     branches: [ "main" ]
     
+strategy:
+  fail-fast: false
+  matrix:
+    # Override automatic language detection by changing the list below.
+    # Supported options are listed in a comment in the default workflow.
+    language: ['go', 'javascript-typescript']
+    
 env:
   MAJOR_NUM: '1'
   MINOR_NUM: '0'
@@ -13,9 +20,7 @@ env:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
   
-jobs: #https://github.com/marketplace/actions/dependency-check     
-
-        
+jobs: #https://github.com/marketplace/actions/dependency-check        
   Dockerfile_scan:
     runs-on: ubuntu-latest
     steps:
