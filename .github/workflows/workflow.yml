@@ -55,7 +55,7 @@ jobs: #https://github.com/marketplace/actions/dependency-check
             
 
   build:
-    needs: Dep_check_test
+    needs: dependancy-scan
     runs-on: ubuntu-latest
 
     steps:
